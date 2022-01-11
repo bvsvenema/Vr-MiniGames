@@ -149,7 +149,8 @@ MonoBehaviour:
   - {fileID: 7324115196191933494}
   - {fileID: 5141988163637915037}
   pawnName: {fileID: 160396}
-  wholePawnEmpty: {fileID: 139516}
+  tvScreenPawn: {fileID: 0}
+  mRend: {fileID: 2392888}
 --- !u!54 &3620613002885245087
 Rigidbody:
   m_ObjectHideFlags: 0
