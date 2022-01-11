@@ -10,6 +10,11 @@ public class HitBowling : MonoBehaviour
     //public Pawn pawn;
     public int ballsHasEnterCollider = 0;
 
+    public GameObject strike;
+    public GameObject miss;
+    public GameObject doubleMiss;
+    public GameObject spare;
+
     public void Start()
     {
         //pawn = GetComponent<Pawn>();
@@ -57,17 +62,22 @@ public class HitBowling : MonoBehaviour
         if (Pawn.pawnsFallen == 10 && ballsHasEnterCollider == 1)
         {
             Debug.Log("Strike");
+            strike.SetActive(true);
         }
         else if (Pawn.pawnsFallen == 10 && ballsHasEnterCollider == 2)
         {
             Debug.Log("Spare");
+            spare.SetActive(true);
         }
         else if (Pawn.pawnsFallen == 0 && ballsHasEnterCollider == 1)
         {
             Debug.Log("Miss");
-        }else if(Pawn.pawnsFallen == 0 && ballsHasEnterCollider == 2)
+            miss.SetActive(true);
+        }
+        else if(Pawn.pawnsFallen == 0 && ballsHasEnterCollider == 2)
         {
             Debug.Log("Double Miss");
+            doubleMiss.SetActive(true);
         }
         else
         {
