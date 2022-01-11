@@ -41,13 +41,15 @@ public class Pawn : MonoBehaviour
 
     IEnumerator PawmEnumerator()
     {
-        
-        rb.velocity = Vector3.up * trustFroce * Time.deltaTime;
-        yield return new WaitForSeconds(2);
-        rb.constraints = RigidbodyConstraints.FreezeAll;
-        Boom();
-        yield return new WaitForSeconds(0.5f);
-        pawnName.gameObject.SetActive(false);
+        if (pawnName.activeInHierarchy == true)
+        {
+            rb.velocity = Vector3.up * trustFroce * Time.deltaTime;
+            yield return new WaitForSeconds(2);
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            Boom();
+            yield return new WaitForSeconds(0.5f);
+            pawnName.gameObject.SetActive(false);
+        }
     }
 
     public void Boom()

@@ -29,7 +29,14 @@ public class HitBowling : MonoBehaviour
             //pawn.PawnHasFallen();
             foreach(var pawn in pawns)
             {
-                pawn.PawnHasFallen();
+                if (!pawn.gameObject.activeSelf)
+                {
+                    Debug.Log("do nothing");
+                }
+                else
+                {
+                    pawn.PawnHasFallen();
+                }
             }
 
         }
