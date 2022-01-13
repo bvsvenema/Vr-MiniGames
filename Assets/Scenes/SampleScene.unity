@@ -826,11 +826,8 @@ MonoBehaviour:
   - {fileID: 1659619350}
   - {fileID: 1079240676}
   - {fileID: 1285969662}
+  SM: {fileID: 0}
   ballsHasEnterCollider: 0
-  strike: {fileID: 0}
-  miss: {fileID: 0}
-  doubleMiss: {fileID: 0}
-  spare: {fileID: 0}
 --- !u!4 &148588588 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424252, guid: 4246925f0393c430189bb4ceba36dc8a,
@@ -2696,6 +2693,7 @@ Transform:
   - {fileID: 1307566155}
   - {fileID: 1837673979}
   - {fileID: 1384805132}
+  - {fileID: 1935610800}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4683,15 +4681,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652646104}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -15.09}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.16253011, y: -0, z: -0, w: 0.9867036}
+  m_LocalPosition: {x: 0, y: 4.06, z: 2.78}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3612539100158057990}
   m_Father: {fileID: 598510681}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 18.708, y: 0, z: 0}
 --- !u!114 &659977996 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5103967234600332958, guid: 4246925f0393c430189bb4ceba36dc8a,
@@ -11114,11 +11112,8 @@ MonoBehaviour:
   - {fileID: 498883828}
   - {fileID: 1698739489}
   - {fileID: 1936308400}
+  SM: {fileID: 0}
   ballsHasEnterCollider: 0
-  strike: {fileID: 291587901}
-  miss: {fileID: 410963776}
-  doubleMiss: {fileID: 1584631123}
-  spare: {fileID: 936573317}
 --- !u!65 &1054235903
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17597,8 +17592,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -21044,6 +21039,55 @@ Transform:
   m_Father: {fileID: 898791241}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1935610799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1935610800}
+  - component: {fileID: 1935610801}
+  m_Layer: 0
+  m_Name: SystemManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1935610800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935610799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 415065728}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1935610801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935610799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543041f19abfb5047989f308309ece87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strike: {fileID: 291587901}
+  miss: {fileID: 410963776}
+  doubleMiss: {fileID: 1584631123}
+  spare: {fileID: 936573317}
+  score: {fileID: 1936437903}
 --- !u!114 &1936308400 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5103967234600332958, guid: 4246925f0393c430189bb4ceba36dc8a,
@@ -21069,13 +21113,14 @@ GameObject:
   - component: {fileID: 1936437907}
   - component: {fileID: 1936437906}
   - component: {fileID: 1936437905}
+  - component: {fileID: 1936437909}
   m_Layer: 0
   m_Name: Scores
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1936437904
 Transform:
   m_ObjectHideFlags: 0
@@ -21190,6 +21235,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936437903}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1936437909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936437903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd469a9738d16a446ac388a1f0540764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!1001 &1943674925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21888,7 +21946,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Your Score:'
+  m_text: 20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -21897,8 +21955,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -23511,7 +23569,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262012783185280569}
   m_LocalRotation: {x: 0.000000021855696, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0693, y: 2.3206763, z: 7.719142}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 120.876, y: 80, z: 60}
   m_ConstrainProportionsScale: 0
   m_Children:

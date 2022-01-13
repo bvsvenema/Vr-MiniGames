@@ -4,23 +4,14 @@ using UnityEngine;
 
 public class HitBowling : MonoBehaviour
 {
-    /* public Pawn pawn;
-     public GameObject pawnPrefab;*/
     public Pawn[] pawns;
-    //public Pawn pawn;
-    public int ballsHasEnterCollider = 0;
+    public SystemManager SM;
 
-    public GameObject strike;
-    public GameObject miss;
-    public GameObject doubleMiss;
-    public GameObject spare;
+    public int ballsHasEnterCollider = 0;
 
     public void Start()
     {
-        //pawn = GetComponent<Pawn>();
-        /*GameObject obj = pawnPrefab;
-
-        pawn = obj.GetComponent<Pawn>();*/
+       
     }
     
     public IEnumerator OnTriggerEnter(Collider collision)
@@ -35,7 +26,6 @@ public class HitBowling : MonoBehaviour
             yield return new WaitForSeconds(5);
             Debug.Log("Ended the waiting");
             //this function sees if the pawn has fallen and then gives you points
-            //pawn.PawnHasFallen();
             foreach(var pawn in pawns)
             {
                 if (!pawn.gameObject.activeSelf)
@@ -49,47 +39,10 @@ public class HitBowling : MonoBehaviour
 
             }
             yield return new WaitForSeconds(5f);
-            TvScreenBowling();
+            SM.TvScreenBowling();
 
         }
 
-    }
-
-
-    public void TvScreenBowling()
-    {
-        Debug.Log("Amount of pawn dat has fallen " + Pawn.pawnsFallen);
-        if (Pawn.pawnsFallen == 10 && ballsHasEnterCollider == 1)
-        {
-            Debug.Log("Strike");
-            strike.SetActive(true);
-        }
-        else if (Pawn.pawnsFallen == 10 && ballsHasEnterCollider == 2)
-        {
-            Debug.Log("Spare");
-            spare.SetActive(true);
-        }
-        else if (Pawn.pawnsFallen == 0 && ballsHasEnterCollider == 1)
-        {
-            Debug.Log("Miss");
-            miss.SetActive(true);
-        }
-        else if(Pawn.pawnsFallen == 0 && ballsHasEnterCollider == 2)
-        {
-            Debug.Log("Double Miss");
-            doubleMiss.SetActive(true);
-        }
-        else
-        {
-            Debug.Log("Big Banana's");
-            foreach (var pawn in pawns)
-            {
-                if (pawn.mRend.enabled == false)
-                {
-                    pawn.tvScreenPawn.SetActive(true);
-                }
-            }
-        }
     }
 
 }
