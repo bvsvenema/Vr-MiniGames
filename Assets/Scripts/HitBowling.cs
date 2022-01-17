@@ -5,13 +5,13 @@ using UnityEngine;
 public class HitBowling : MonoBehaviour
 {
     public Pawn[] pawns;
-    public SystemManager SM;
+    public SystemManager SystemManager;
 
     public int ballsHasEnterCollider = 0;
 
     public void Start()
     {
-       
+        //SystemManager = GetComponent<SystemManager>();
     }
     
     public IEnumerator OnTriggerEnter(Collider collision)
@@ -39,10 +39,11 @@ public class HitBowling : MonoBehaviour
 
             }
             yield return new WaitForSeconds(5f);
-            SM.TvScreenBowling();
+            SystemManager.TvScreenBowling();
 
         }
 
     }
+
 
 }

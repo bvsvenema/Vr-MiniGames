@@ -5,8 +5,8 @@ using UnityEngine;
 public class SystemManager : MonoBehaviour
 {
     //scripts
-    private HitBowling HB;
-    private Pawn P;
+    public HitBowling HB;
+    //private Pawn P;
 
     //In game adds
     public GameObject strike;

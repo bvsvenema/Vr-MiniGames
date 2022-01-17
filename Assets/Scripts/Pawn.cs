@@ -9,7 +9,7 @@ public class Pawn : MonoBehaviour
     private HitBowling hit;
 
     public static int pawnsFallen = 0;
-    private float trustFroce = 1000f;
+    private float trustFroce = 5000f;
 
     public ParticleSystem[] psPawn;
     public GameObject pawnName;
