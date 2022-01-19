@@ -6,6 +6,7 @@ public class HitBowling : MonoBehaviour
 {
     public Pawn[] pawns;
     public SystemManager SystemManager;
+    public ScoreSystem SS;
 
     public int ballsHasEnterCollider = 0;
 
@@ -39,8 +40,18 @@ public class HitBowling : MonoBehaviour
 
             }
             yield return new WaitForSeconds(5f);
-            SystemManager.TvScreenBowling();
-
+            StartCoroutine(SystemManager.TvScreenBowling());
+            yield return new WaitForSeconds(15f);
+            if(ballsHasEnterCollider == 2)
+            {
+                SS.ScoreRoundBowling = 0;
+                yield return new WaitForSeconds(5f);
+                foreach(var pawn in pawns)
+                {
+                   pawn.ResetPosistion();
+                }
+                ballsHasEnterCollider = 0;
+            }
         }
 
     }

@@ -5,8 +5,11 @@ using UnityEngine.ParticleSystemJobs;
 
 public class Pawn : MonoBehaviour
 {
+    Vector3 originalpos;
+    public Quaternion originalRot;
+
     private Rigidbody rb;
-    private HitBowling hit;
+    public ScoreSystem SS;
 
     public static int pawnsFallen = 0;
     private float trustFroce = 5000f;
@@ -16,11 +19,14 @@ public class Pawn : MonoBehaviour
     //public GameObject wholePawnEmpty;
     public GameObject tvScreenPawn;
     public MeshRenderer mRend;
+    public bool noMorePoints = false;
     
     //ParticleSystem ps;
 
     public void Start()
     {
+        originalpos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        originalRot = transform.rotation;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -36,6 +42,8 @@ public class Pawn : MonoBehaviour
                 StartCoroutine(PawmEnumerator());
                 Debug.Log(pawnName.name + " has fallen", this);
                 pawnsFallen++;
+                SS.ScoreRoundBowling++;
+                SS.ScoreTotalBowling++;
                 //function
             }
             else
@@ -51,7 +59,7 @@ public class Pawn : MonoBehaviour
 
     IEnumerator PawmEnumerator()
     {
-        if (pawnName.activeInHierarchy == true)
+        if (mRend.enabled == true)
         {
             rb.velocity = Vector3.up * trustFroce * Time.deltaTime;
             yield return new WaitForSeconds(2);
@@ -59,6 +67,10 @@ public class Pawn : MonoBehaviour
             Boom();
             yield return new WaitForSeconds(0.5f);
             mRend.enabled = false;
+            //if(mRend.enabled = true)
+            //{
+               // gameObject.transform.position = originalpos;
+            //}
         }
     }
 
@@ -68,6 +80,14 @@ public class Pawn : MonoBehaviour
         {
             ps.Play();
         }
+    }
+
+    public void ResetPosistion()
+    {
+        gameObject.transform.rotation = originalRot;
+        gameObject.transform.position = originalpos;
+        mRend.enabled = true;
+        Debug.Log("Rest posistion");
     }
 
 

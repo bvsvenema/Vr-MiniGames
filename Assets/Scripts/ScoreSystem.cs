@@ -5,26 +5,42 @@ using TMPro;
 
 public class ScoreSystem : MonoBehaviour
 {
-    private int scoreBowling;
-    public TextMeshProUGUI text;
+    private int scoreTotalBowling;
+    private int scoreRoundBowling; 
+    public TextMeshProUGUI textTotalPoints;
+    public TextMeshProUGUI textRoundPoints;
 
-    public  int ScoreBowling
+    public  int ScoreTotalBowling
     {
-        get { return scoreBowling; }
-        set { scoreBowling = value;
-              UpdateBowlingScore();
+        get { return scoreTotalBowling; }
+        set {scoreTotalBowling = value;
+            UpdateBowlingTotalScore();
+        }
+    }
+
+    public int ScoreRoundBowling
+    {
+        get{ return scoreRoundBowling; }
+        set{ scoreRoundBowling = value;
+            UpdateBowlingRoundScore();
         }
     }
 
     void Start()
     {
-        text = GetComponent<TextMeshProUGUI>();
+        //text = GetComponent<TextMeshProUGUI>();
 
-        text.text = "" + scoreBowling;
+        textTotalPoints.text = "" + scoreTotalBowling;
+        textRoundPoints.text = "" + scoreRoundBowling;
     }
 
-    public void UpdateBowlingScore()
+    public void UpdateBowlingTotalScore()
     {
-        text.text = "" + scoreBowling;
+        textTotalPoints.text = "" + scoreTotalBowling;
+    }
+
+    public void UpdateBowlingRoundScore()
+    {
+        textRoundPoints.text = "" + scoreRoundBowling;
     }
 }

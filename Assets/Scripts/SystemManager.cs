@@ -6,7 +6,8 @@ public class SystemManager : MonoBehaviour
 {
     //scripts
     public HitBowling HB;
-    //private Pawn P;
+    public ScoreSystem SS;
+    //public Pawn P;
 
     //In game adds
     public GameObject strike;
@@ -16,38 +17,34 @@ public class SystemManager : MonoBehaviour
     public GameObject score;
 
     //private checks
-    private bool strikeMp4 = false;
     private int strikeStreak = 0;
 
-    //wait for second script
-    public IEnumerator Wfs5()
-    {
-        if (strikeMp4 == true)
-        {
-            yield return new WaitForSeconds(10f);
-        }
-        else
-        {
-            yield return new WaitForSeconds(5);
-            score.SetActive(true);
-        }
-    }
 
     //what happens when you hit the pins
-    public void TvScreenBowling()
+    public IEnumerator TvScreenBowling()
     {
         Debug.Log("Amount of pawn dat has fallen " + Pawn.pawnsFallen);
         //strike
         if (Pawn.pawnsFallen == 10 && HB.ballsHasEnterCollider == 1)
         {
-            strikeMp4 = true;
             Debug.Log("Strike");
             strike.SetActive(true);
-            strikeStreak++;
+            if(strikeStreak != 3)
+            {
+                strikeStreak++;
+            }
+            else
+            yield return new WaitForSecondsRealtime(10f);
             //switch to see if you hit how many strike. with more strikes you get more points
             switch (strikeStreak)
             {
                 case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 3:
 
                     break;
             }
@@ -60,7 +57,9 @@ public class SystemManager : MonoBehaviour
             score.SetActive(false);
             spare.SetActive(true);
             strikeStreak = 0;
-            Wfs5();
+            yield return new WaitForSecondsRealtime(5f);
+            spare.SetActive(false);
+            score.SetActive(true);
         }
         //Miss
         else if (Pawn.pawnsFallen == 0 && HB.ballsHasEnterCollider == 1)
@@ -69,7 +68,9 @@ public class SystemManager : MonoBehaviour
             score.SetActive(false);
             miss.SetActive(true);
             strikeStreak = 0;
-            Wfs5();
+            yield return new WaitForSecondsRealtime(5f);
+            miss.SetActive(false);
+            score.SetActive(true);
         }
         //Double Miss
         else if (Pawn.pawnsFallen == 0 && HB.ballsHasEnterCollider == 2)
@@ -78,22 +79,35 @@ public class SystemManager : MonoBehaviour
             score.SetActive(false);
             doubleMiss.SetActive(true);
             strikeStreak = 0;
-            Wfs5();
+            yield return new WaitForSecondsRealtime(5f);
+            doubleMiss.SetActive(false);
+            score.SetActive(true);
         }
         //just hit the pins nothin special
         else
         {
             Debug.Log("Big Banana's");
             strikeStreak = 0;
+            //SS.ScoreRoundBowling = 0;
             foreach (var pawn in HB.pawns)
             {
                 if (pawn.mRend.enabled == false)
                 {
+                    Debug.Log("pawns active");
                     score.SetActive(false);
                     pawn.tvScreenPawn.SetActive(true);
-                    Wfs5();
                 }
+
             }
+            yield return new WaitForSecondsRealtime(5f);
+            Debug.Log("weird");
+            foreach (var pawn in HB.pawns)
+            {
+                Debug.Log("pawns disable");
+                pawn.tvScreenPawn.SetActive(false);
+            }
+            score.SetActive(true);
         }
     }
+
 }
