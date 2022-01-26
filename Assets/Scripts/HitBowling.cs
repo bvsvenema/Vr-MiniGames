@@ -5,8 +5,10 @@ using UnityEngine;
 public class HitBowling : MonoBehaviour
 {
     public Pawn[] pawns;
-    public SystemManager SystemManager;
+    public BowlingBall[] balls;
+    public SystemManager systemManager;
     public ScoreSystem SS;
+    public GameObject blockBowling;
 
     public int ballsHasEnterCollider = 0;
 
@@ -21,6 +23,7 @@ public class HitBowling : MonoBehaviour
         //if the ball hits the end of the bowling ally start this 
         if (collision.gameObject.tag == "Ball")
         {
+            blockBowling.SetActive(true);
             ballsHasEnterCollider++;
             Debug.Log("Start de second wait");
             //wait 5 second for starting the fuction
@@ -40,12 +43,18 @@ public class HitBowling : MonoBehaviour
 
             }
             yield return new WaitForSeconds(5f);
-            StartCoroutine(SystemManager.TvScreenBowling());
+            StartCoroutine(systemManager.TvScreenBowling());
             yield return new WaitForSeconds(15f);
             if(ballsHasEnterCollider == 2)
             {
+                systemManager.roundCounter++;
                 SS.ScoreRoundBowling = 0;
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(4.8f);
+                foreach(var ball in balls)
+                {
+                    ball.ResetBowlingBall();
+                }
+                yield return new WaitForSeconds(0.2f);
                 foreach(var pawn in pawns)
                 {
                    pawn.ResetPosistion();
