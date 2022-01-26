@@ -23,6 +23,7 @@ public class Pawn : MonoBehaviour
     
     //ParticleSystem ps;
 
+
     public void Start()
     {
         originalpos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
@@ -53,9 +54,8 @@ public class Pawn : MonoBehaviour
                 //fuint
             }
         }
-
-       
     }
+
 
     IEnumerator PawmEnumerator()
     {
@@ -89,9 +89,5 @@ public class Pawn : MonoBehaviour
         mRend.enabled = true;
         Debug.Log("Rest posistion");
     }
-
-
-
-
 
 }
