@@ -23,11 +23,13 @@ public class HitBowling : MonoBehaviour
         //if the ball hits the end of the bowling ally start this 
         if (collision.gameObject.tag == "Ball")
         {
-            blockBowling.SetActive(true);
+            
             ballsHasEnterCollider++;
             Debug.Log("Start de second wait");
+            yield return new WaitForSeconds(2.5f);
+            blockBowling.SetActive(true);
             //wait 5 second for starting the fuction
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2.5f);
             Debug.Log("Ended the waiting");
             //this function sees if the pawn has fallen and then gives you points
             foreach(var pawn in pawns)
@@ -45,10 +47,13 @@ public class HitBowling : MonoBehaviour
             yield return new WaitForSeconds(5f);
             StartCoroutine(systemManager.TvScreenBowling());
             yield return new WaitForSeconds(15f);
-            if(ballsHasEnterCollider == 2)
+            if(ballsHasEnterCollider == 2 || systemManager.strikeBowling == true)
             {
+                systemManager.strikeBowling = false;
                 systemManager.roundCounter++;
                 SS.ScoreRoundBowling = 0;
+                ballsHasEnterCollider = 0;
+                Pawn.pawnsFallen = 0;
                 yield return new WaitForSeconds(4.8f);
                 foreach(var ball in balls)
                 {
@@ -58,8 +63,9 @@ public class HitBowling : MonoBehaviour
                 foreach(var pawn in pawns)
                 {
                    pawn.ResetPosistion();
+                    Debug.Log("resetPawns");
                 }
-                ballsHasEnterCollider = 0;
+               
             }
         }
 

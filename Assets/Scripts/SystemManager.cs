@@ -20,6 +20,7 @@ public class SystemManager : MonoBehaviour
     //private checks
     private int strikeSpareStreak;
     public int roundCounter;
+    public bool strikeBowling = false;
 
 
     //what happens when you hit the pins
@@ -37,6 +38,8 @@ public class SystemManager : MonoBehaviour
             {
                 Debug.Log("Strike");
                 strike.SetActive(true);
+                score.SetActive(false);
+                strikeBowling = true;
                 if (strikeSpareStreak != 3)
                 {
                     strikeSpareStreak++;

@@ -86,6 +86,7 @@ public class Pawn : MonoBehaviour
     {
         gameObject.transform.rotation = originalRot;
         gameObject.transform.position = originalpos;
+        rb.constraints = RigidbodyConstraints.None;
         mRend.enabled = true;
         Debug.Log("Rest posistion");
     }
