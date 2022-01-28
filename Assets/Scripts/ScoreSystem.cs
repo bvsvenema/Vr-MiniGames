@@ -8,15 +8,18 @@ public class ScoreSystem : MonoBehaviour
     //in game score
     private int scoreTotalBowling;
     private int scoreRoundBowling;
+    private int roundCounter = 1;
 
     //end of game score
     private int scoreTotalStrikes;
     private int scoreTotalSpares;
     private int scoreTotalPinsHit;
 
+
     //in game text
     public TextMeshProUGUI textTotalPoints;
     public TextMeshProUGUI textRoundPoints;
+    public TextMeshProUGUI textRoundCoutner;
 
     //end of game text
     public TextMeshProUGUI textTotalScore;
@@ -36,6 +39,13 @@ public class ScoreSystem : MonoBehaviour
         get{ return scoreRoundBowling; }
         set{ scoreRoundBowling = value;
             UpdateBowlingRoundScore(); }
+    }
+
+    public int RoundCounter
+    {
+        get { return roundCounter; }
+        set { roundCounter = value;
+            UpdateRoundCounter(); }
     }
 
     public int ScoreTotalStrikes
@@ -64,6 +74,7 @@ public class ScoreSystem : MonoBehaviour
         //text in game update
         textTotalPoints.text = "" + scoreTotalBowling;
         textRoundPoints.text = "" + scoreRoundBowling;
+        textRoundCoutner.text = "Round " + roundCounter + " Points";
 
         //text end game update
         textTotalScore.text = "" + scoreTotalBowling;
@@ -81,6 +92,11 @@ public class ScoreSystem : MonoBehaviour
     public void UpdateBowlingRoundScore()
     {
         textRoundPoints.text = "" + scoreRoundBowling;
+    }
+    
+    public void UpdateRoundCounter()
+    {
+        textRoundCoutner.text = "Round " + roundCounter + " Points";
     }
 
     public void UpdateStrikeScore()

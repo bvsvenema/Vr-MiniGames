@@ -7,6 +7,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ContinuousMovmend : MonoBehaviour
 {
+    Vector3 originalpos;
+    public Quaternion originalRot;
+
     public float speed = 1;
     public XRNode inputSource;
     public float gravity = -9.81f;
@@ -27,6 +30,9 @@ public class ContinuousMovmend : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        originalpos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        originalRot = transform.rotation;
+
         InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource);
         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
     }
@@ -68,5 +74,11 @@ public class ContinuousMovmend : MonoBehaviour
         bool hasHit = Physics.SphereCast(rayStart, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
         return hasHit;
 
+    }
+
+    public void ResetXRRig()
+    {
+        gameObject.transform.rotation = originalRot;
+        gameObject.transform.position = originalpos;
     }
 }

@@ -7,6 +7,8 @@ public class SystemManager : MonoBehaviour
     //scripts
     public HitBowling HB;
     public ScoreSystem SS;
+    public ContinuousMovmend xrRig;
+
     public GameObject blockBowling;
     //public Pawn P;
 
@@ -19,14 +21,13 @@ public class SystemManager : MonoBehaviour
 
     //private checks
     private int strikeSpareStreak;
-    public int roundCounter;
     public bool strikeBowling = false;
 
 
     //what happens when you hit the pins
     public IEnumerator TvScreenBowling()
     {
-        if (roundCounter == 10)
+        if (SS.RoundCounter == 10)
         {
             Debug.Log("End of game");
         }
@@ -144,6 +145,40 @@ public class SystemManager : MonoBehaviour
                 score.SetActive(true);
                 blockBowling.SetActive(false);
             }
+        }
+    }
+
+    public void ResetEveryThingBowling ()
+    {
+        SS.ScoreTotalBowling = 0;
+        SS.ScoreRoundBowling = 0;
+        SS.ScoreTotalStrikes = 0;
+        SS.ScoreTotalSpares = 0;
+        SS.ScoreTotalPinsHit = 0;
+
+        HB.ballsHasEnterCollider = 0;
+        Pawn.pawnsFallen = 0;
+
+        SS.RoundCounter = 0;
+        strikeSpareStreak = 0;
+        strikeBowling = false;
+
+        blockBowling.SetActive(false);
+
+        strike.SetActive(false);
+        miss.SetActive(false);
+        doubleMiss.SetActive(false);
+        spare.SetActive(false);
+        score.SetActive(true);
+
+        xrRig.ResetXRRig();
+        foreach (var pawn in HB.pawns)
+        {
+            pawn.ResetPosistion();
+        }
+        foreach(var ball in HB.balls)
+        {
+            ball.ResetBowlingBall();
         }
     }
 

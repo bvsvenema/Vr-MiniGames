@@ -50,7 +50,7 @@ public class HitBowling : MonoBehaviour
             if(ballsHasEnterCollider == 2 || systemManager.strikeBowling == true)
             {
                 systemManager.strikeBowling = false;
-                systemManager.roundCounter++;
+                SS.RoundCounter++;
                 SS.ScoreRoundBowling = 0;
                 ballsHasEnterCollider = 0;
                 Pawn.pawnsFallen = 0;
