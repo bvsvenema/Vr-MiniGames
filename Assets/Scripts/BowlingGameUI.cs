@@ -11,6 +11,9 @@ public class BowlingGameUI : MonoBehaviour
     public GameObject spawn;
     public GameObject bowlingMiniGame;
 
+    public GameObject endGameUI;
+    public GameObject highscoresUI;
+
 
     public void HomeButton()
     {
@@ -27,7 +30,8 @@ public class BowlingGameUI : MonoBehaviour
 
     public void HighScoresButton()
     {
-
+        endGameUI.SetActive(false);
+        highscoresUI.SetActive(true);
     }
 
     public void QuitGameButton()

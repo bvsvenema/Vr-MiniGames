@@ -6,6 +6,7 @@ public class SystemManager : MonoBehaviour
 {
     //scripts
     public HitBowling HB;
+    public HighScoreTable HsT;
     public ScoreSystem SS;
     public ContinuousMovmend xrRig;
 
@@ -29,6 +30,7 @@ public class SystemManager : MonoBehaviour
     {
         if (SS.RoundCounter == 10)
         {
+            HsT.AddHighscoreEntry(SS.ScoreTotalBowling, "dd");
             Debug.Log("End of game");
         }
         else

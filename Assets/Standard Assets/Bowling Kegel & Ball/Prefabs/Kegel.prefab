@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 424252}
-  - component: {fileID: 6681773380298808503}
   m_Layer: 0
   m_Name: Kegel
   m_TagString: Untagged
@@ -33,18 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6681773380298808503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547eec8940eec57458aa78990abcdd3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &160396
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f9ec8855edf504e9c912483553c913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalRot: {x: 0, y: 0, z: 0, w: 0}
+  SS: {fileID: 0}
   psPawn:
   - {fileID: 7829450049882172235}
   - {fileID: 7324115196191933494}
@@ -151,6 +140,7 @@ MonoBehaviour:
   pawnName: {fileID: 160396}
   tvScreenPawn: {fileID: 0}
   mRend: {fileID: 2392888}
+  noMorePoints: 0
 --- !u!54 &3620613002885245087
 Rigidbody:
   m_ObjectHideFlags: 0
