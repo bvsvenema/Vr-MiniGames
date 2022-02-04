@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SystemManager : MonoBehaviour
 {
@@ -19,18 +20,32 @@ public class SystemManager : MonoBehaviour
     public GameObject doubleMiss;
     public GameObject spare;
     public GameObject score;
+    public GameObject xRRigBowlingGame;
+    public GameObject xRRigBowlingSetName;
 
     //private checks
     private int strikeSpareStreak;
     public bool strikeBowling = false;
+    public int roundCount = 10;
+
+    private TextMeshProUGUI playerTextOutput;
+    private const int maxLength = 10;
+
+
+
+    public string CappedString
+    {
+        get { return playerTextOutput.text; }
+        set { playerTextOutput.text = value != null && value.Length > maxLength ? value.Substring(0, maxLength) : value; }
+    }
 
 
     //what happens when you hit the pins
     public IEnumerator TvScreenBowling()
     {
-        if (SS.RoundCounter == 10)
+        if (SS.RoundCounter == roundCount)
         {
-            HsT.AddHighscoreEntry(SS.ScoreTotalBowling, "dd");
+            HsT.AddHighscoreEntry(SS.ScoreTotalBowling, playerTextOutput.text);
             Debug.Log("End of game");
         }
         else
@@ -182,6 +197,12 @@ public class SystemManager : MonoBehaviour
         {
             ball.ResetBowlingBall();
         }
+    }
+
+    public void StartBowlingMiniGame()
+    {
+        xRRigBowlingSetName.SetActive(false);
+        xRRigBowlingSetName.SetActive(true);
     }
 
 }
