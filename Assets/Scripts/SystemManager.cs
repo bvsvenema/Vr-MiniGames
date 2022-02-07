@@ -28,7 +28,7 @@ public class SystemManager : MonoBehaviour
     public bool strikeBowling = false;
     public int roundCount = 10;
 
-    private TextMeshProUGUI playerTextOutput;
+    public TextMeshProUGUI playerTextOutput;
     private const int maxLength = 10;
 
 
@@ -202,7 +202,7 @@ public class SystemManager : MonoBehaviour
     public void StartBowlingMiniGame()
     {
         xRRigBowlingSetName.SetActive(false);
-        xRRigBowlingSetName.SetActive(true);
+        xRRigBowlingGame.SetActive(true);
     }
 
 }

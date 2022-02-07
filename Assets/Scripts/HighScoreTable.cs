@@ -11,14 +11,26 @@ public class HighScoreTable : MonoBehaviour
 
     private void Awake()
     {
+        
         entryContainer = transform.Find("highscoreEntryContainer");
         entryTemplate = entryContainer.Find("highscoreEntryTemplate");
 
         entryTemplate.gameObject.SetActive(false);
 
-            string jsonString = PlayerPrefs.GetString("highscoreTable");
-        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
+
+           string jsonString = PlayerPrefs.GetString("highscoreTable");
+        //Debug.Log(jsonString);
+        Highscores highscores = /*JsonUtility.FromJson<Highscores>(jsonString);*/ new Highscores();
+
+        if(highscores == null)
+        {
+
+            Debug.Log("Initializing table with default values...");
+            AddHighscoreEntry(10, "test");
+            jsonString = PlayerPrefs.GetString("highscoreTable");
+            highscores = JsonUtility.FromJson<Highscores>(jsonString);
+        }
         // sort entry list by score
         for (int i = 0; i < highscores.highscoreEntryList.Count; i++)
         {
@@ -75,10 +87,16 @@ public class HighScoreTable : MonoBehaviour
     {
         // Create HighscoreEntry
         HighscoreEntry highscoreEntry = new HighscoreEntry { score = score, name = name };
+        Debug.Log(highscoreEntry);
+
+        PlayerPrefs.SetString("highscoreTable", JsonUtility.ToJson(highscoreEntry));
 
         // load saved Highscores
         string jsonString = PlayerPrefs.GetString("highscoreTable");
+        Debug.Log(jsonString);
+
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+        Debug.Log(highscores);
 
         // Add new entry to Highscores
         highscores.highscoreEntryList.Add(highscoreEntry);
@@ -89,13 +107,13 @@ public class HighScoreTable : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    private class Highscores
+    public class Highscores
     {
-        public List<HighscoreEntry> highscoreEntryList;
+        public List<HighscoreEntry> highscoreEntryList = new List<HighscoreEntry>();
     }
 
     [System.Serializable]
-    private class HighscoreEntry {
+    public class HighscoreEntry {
         public int score;
         public string name;
     }

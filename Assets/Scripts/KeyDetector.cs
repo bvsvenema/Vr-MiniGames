@@ -39,6 +39,7 @@ public class KeyDetector : MonoBehaviour
                         KeyFeedBack.keyHitted--;
                     }else if (key.text == "Submit" )
                     {
+                        Debug.Log("sumbit");
                         SM.StartBowlingMiniGame();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
                     }
                     else /*if (KeyFeedBack.keyHitted != 10)*/
