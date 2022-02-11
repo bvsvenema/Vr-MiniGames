@@ -7,7 +7,7 @@ public class SystemManager : MonoBehaviour
 {
     //scripts
     public HitBowling HB;
-    public HighScoreTable HsT;
+    public HighscoreTable HsT;
     public ScoreSystem SS;
     public ContinuousMovmend xrRig;
 
@@ -20,8 +20,13 @@ public class SystemManager : MonoBehaviour
     public GameObject doubleMiss;
     public GameObject spare;
     public GameObject score;
+    
+
     public GameObject xRRigBowlingGame;
     public GameObject xRRigBowlingSetName;
+    public GameObject scoreBoardUI;
+    public GameObject endGameUI;
+
 
     //private checks
     private int strikeSpareStreak;
@@ -45,7 +50,10 @@ public class SystemManager : MonoBehaviour
     {
         if (SS.RoundCounter == roundCount)
         {
+            endGameUI.SetActive(true);
+            scoreBoardUI.SetActive(true);
             HsT.AddHighscoreEntry(SS.ScoreTotalBowling, playerTextOutput.text);
+            HsT.Awake();
             Debug.Log("End of game");
         }
         else
